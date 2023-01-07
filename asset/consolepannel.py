@@ -50,11 +50,11 @@ async def on_ready():
         
         if guild.member_count >= 20:
             sleeptime = 0
-        elif guild.member_count >=100:
+        if guild.member_count >=100:
             sleeptime = 8
-        elif guild.member_count >=200:
+        if guild.member_count >=200:
             sleeptime = 16
-        elif guild.member_count >= 300:
+        if guild.member_count >= 300:
             sleeptime = 30
 
         timeeti = guild.member_count * sleeptime
