@@ -45,25 +45,16 @@ async def on_ready():
             print(f"{Fore.RED}Invalid server id")
             rep_dmall2 = input("please re send an server id correctly")
             guild = client.get_guild(int(rep_dmall2))
-        print("What message do you want to dm-all")
         sleeptime = 0
-        
-        if guild.member_count >= 20:
-            sleeptime = 0
-        if guild.member_count >=100:
-            sleeptime = 8
-        if guild.member_count >=200:
-            sleeptime = 16
-        if guild.member_count >= 300:
-            sleeptime = 30
-
+        sleeptime = input("How many y sleep between messages? : ")
+        int(sleeptime)
         timeeti = guild.member_count * sleeptime
         fdmall = 0
         tdmall = 0
         erreur = 0
         message = input("Message : ")
         members = guild.members
-        print(f"temps estimer {timeeti}seconds")
+        timedm =  datetime.timedelta(seconds=int(timeeti))
         for member in members:
             time.sleep(sleeptime)
             try:
