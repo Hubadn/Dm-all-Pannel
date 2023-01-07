@@ -302,7 +302,7 @@ class menu:
             return True
     def dmall():
         print(Fore.RED +"Your bot will be running in few seconds")
-        with open('powerrequire/db/config.json', 'r') as f:
+        with open('asset/db/config.json', 'r') as f:
                 prefixes = json.load(f)
         token = prefixes["token"]
         try :
