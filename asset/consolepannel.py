@@ -54,9 +54,8 @@ async def on_ready():
         erreur = 0
         message = input("Message : ")
         members = guild.members
-        timedm =  datetime.timedelta(seconds=int(timeeti))
         for member in members:
-            time.sleep(sleeptime)
+            time.sleep(int(sleeptime))
             try:
                     await member.send(message)
                     tdmall = tdmall + 1
