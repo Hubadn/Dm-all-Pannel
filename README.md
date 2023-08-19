@@ -9,8 +9,8 @@
 
 <ul>
 
-    <li>have python on your computer</li>
-    <li>run installer.bat for install require</li>
-    <li>enjoy tools 😁</li>
+    * have python on your computer
+    * run installer.bat for install require
+    * enjoy tools 😁
 
 </ul>
