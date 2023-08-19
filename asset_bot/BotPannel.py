@@ -40,7 +40,8 @@ async def on_ready():
             pass
         if embed_image != "":
             embed.set_image(url= embed_image)
-        
+    if type_message == "2":
+        message_user = input("write your dm-all message : ")
     guild= client.get_guild(guild_id)
     print("you dm-all is ready to work ")
     input(
@@ -60,8 +61,19 @@ press enter for star dm-all        """)
                 user_dm = user_dm  + 1
             except: 
                 pass
-        
 
+        elif type_message == "2":
+
+            try :
+                await member.send(message_user)
+                user_dm = user_dm  + 1
+            except: 
+                pass             
+
+        SetupTools.clear()
+
+        
+        print(f"user dm-all {user_dm}/{len(guild.members)}")
 
 
 
