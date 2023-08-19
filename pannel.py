@@ -21,7 +21,7 @@ hello in dm-all pannel
                                                                                                         
 """)
 
-answer = input("do you want dm-all with bot[1] or self[2] ")
+answer = input("do you want dm-all with \nbot[1]\nself[2]\nanswer :  ")
 
 if answer == "1" :
     

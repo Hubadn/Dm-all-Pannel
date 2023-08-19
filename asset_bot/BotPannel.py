@@ -26,7 +26,7 @@ async def on_ready():
 
     guild_id = input("enter discord guild id : ")
     time_sleep : int = input("coldown between send message (if you time sleep is littel your bot can be flagged) : ")
-    type_message = input("what time of message do you want to send\n embed[1]\nmessage[2]\n answer : ")
+    type_message = input("what time of message do you want to send\nembed[1]\nmessage[2]\n answer : ")
     if type_message == "1":
 
         embed_title = input("title of embed : ")
@@ -55,16 +55,16 @@ guild members : {len(guild.members)}
 type message : {type_message}
 time sleep  : {time_sleep}
 
-duration : { member_nb * time_sleep}
+duration : in-development
 
-press enter for star dm-all        """)    
+press enter for star dm-all""")    
     user_dm_true = 0
     user_dm_false = 0
 
     print(f"user dm-all {user_dm_true}/{len(guild.members)}")
     
     for member in guild.members :
-        time.sleep(time_sleep)
+        time.sleep(int(time_sleep))
         if type_message =="1":
             try :
                 await member.send(embed = embed)
@@ -100,7 +100,7 @@ user no-dm : """+ Fore.RED + str(user_dm_false) + Fore.WHITE + """
     time.sleep(3)
 
     await client.logout()
-    
+
 def main_bot():
     with open('config.json', 'r') as file_json:
         file = json.load(file_json)
