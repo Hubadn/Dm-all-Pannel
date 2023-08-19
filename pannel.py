@@ -1,5 +1,5 @@
 import colorama , asset_bot , asset_self
-from asset_bot import *
+from asset_bot.BotPannel import *
 from asset_self import *
 
 
@@ -25,3 +25,4 @@ answer = input("do you want dm-all with bot[1] or self[2] ")
 
 if answer == "1" :
     
+    main_bot()

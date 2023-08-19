@@ -1,7 +1,8 @@
-import discord , os
+import discord , os , json
 from discord.ext import commands
 from discord import Webhook, RequestsWebhookAdapter
 user_dm = 0
+
 class SetupTools :
 
 
@@ -15,6 +16,7 @@ class SetupTools :
 
 intents = discord.Intents.all()    
 client = commands.Bot(command_prefix="pannel!",help_command= None,intents=intents)
+
 
 @client.event
 async def on_ready():
@@ -75,6 +77,10 @@ press enter for star dm-all        """)
         
         print(f"user dm-all {user_dm}/{len(guild.members)}")
 
+def main_bot():
+    with open('config.json', 'r') as file_json:
+        file = json.load(file_json)
+    client.run(file["token"])
 
 
 
