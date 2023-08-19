@@ -1,7 +1,8 @@
-import discord , os , json
+import discord , os , json, colorama, time
 from discord.ext import commands
 from discord import Webhook, RequestsWebhookAdapter
 
+from colorama import *
 
 class SetupTools :
 
@@ -45,7 +46,7 @@ async def on_ready():
     if type_message == "2":
         message_user = input("write your dm-all message : ")
     guild = client.get_guild(int(guild_id))
-    print(guild)
+    member_nb = len(guild.members)
     print("you dm-all is ready to work ")
     input(
         f"""
@@ -54,6 +55,8 @@ guild members : {len(guild.members)}
 type message : {type_message}
 time sleep  : {time_sleep}
 
+duration : { member_nb * time_sleep}
+
 press enter for star dm-all        """)    
     user_dm_true = 0
     user_dm_false = 0
@@ -61,6 +64,7 @@ press enter for star dm-all        """)
     print(f"user dm-all {user_dm_true}/{len(guild.members)}")
     
     for member in guild.members :
+        time.sleep(time_sleep)
         if type_message =="1":
             try :
                 await member.send(embed = embed)
@@ -82,12 +86,21 @@ press enter for star dm-all        """)
 
         
         print(f"user dm-all {user_dm_true}/{len(guild.members)}")
-    
+
     print(f"""
 dm-all end
       
-user dm : {user_dm_true}
+user dm : """+ Fore.GREEN + str(user_dm_true)  + Fore.WHITE + """
+
+user no-dm : """+ Fore.RED + str(user_dm_false) + Fore.WHITE + """
+
 """)
+    
+    print("bot will be stop in 3 seconds")
+    time.sleep(3)
+
+    await client.logout()
+    
 def main_bot():
     with open('config.json', 'r') as file_json:
         file = json.load(file_json)
