@@ -1,7 +1,7 @@
 import discord , os , json
 from discord.ext import commands
 from discord import Webhook, RequestsWebhookAdapter
-user_dm = 0
+
 
 class SetupTools :
 
@@ -23,9 +23,9 @@ async def on_ready():
 
     print("lets config you dm-all")
 
-    guild_id : int = input("enter discord guild id : ")
+    guild_id = input("enter discord guild id : ")
     time_sleep : int = input("coldown between send message (if you time sleep is littel your bot can be flagged) : ")
-    type_message = input("what time of message do you want to send\n embed[1]\nmessage[2]")
+    type_message = input("what time of message do you want to send\n embed[1]\nmessage[2]\n answer : ")
     if type_message == "1":
 
         embed_title = input("title of embed : ")
@@ -44,7 +44,8 @@ async def on_ready():
             embed.set_image(url= embed_image)
     if type_message == "2":
         message_user = input("write your dm-all message : ")
-    guild= client.get_guild(guild_id)
+    guild = client.get_guild(int(guild_id))
+    print(guild)
     print("you dm-all is ready to work ")
     input(
         f"""
@@ -54,29 +55,39 @@ type message : {type_message}
 time sleep  : {time_sleep}
 
 press enter for star dm-all        """)    
-        
-    print(f"user dm-all {user_dm}/{len(guild.members)}")
+    user_dm_true = 0
+    user_dm_false = 0
+
+    print(f"user dm-all {user_dm_true}/{len(guild.members)}")
+    
     for member in guild.members :
         if type_message =="1":
             try :
                 await member.send(embed = embed)
-                user_dm = user_dm  + 1
+                user_dm_true = user_dm_true  + 1
             except: 
-                pass
+                user_dm_false = user_dm_false + 1
+                return
 
         elif type_message == "2":
 
             try :
                 await member.send(message_user)
-                user_dm = user_dm  + 1
+                user_dm_true = user_dm_true  + 1
             except: 
+                user_dm_false = user_dm_false + 1
                 pass             
 
         SetupTools.clear()
 
         
-        print(f"user dm-all {user_dm}/{len(guild.members)}")
-
+        print(f"user dm-all {user_dm_true}/{len(guild.members)}")
+    
+    print(f"""
+dm-all end
+      
+user dm : {user_dm_true}
+""")
 def main_bot():
     with open('config.json', 'r') as file_json:
         file = json.load(file_json)
