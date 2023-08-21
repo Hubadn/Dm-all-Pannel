@@ -1,6 +1,6 @@
-# Dm-all-Pannel
+# Dm-all tools
 
-<h1>Dm-All Bot with Console pannel</h1>
+<h1>Dm-All tools</h1>
 
 <p>Devoloper  : legenduser & server support <a href = "https://discord.gg/hubadn" target ="_blank">Support</a></p>
 
